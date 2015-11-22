@@ -39,11 +39,11 @@ app.use(morgan(':remote-addr :method :url HTTP/:http-version :status :res[conten
 
 // basic route
 app.get('/', function (req, res) {
-    res.send('Hello! The API is at http://localhost:' + port + '/api');
+    res.send('Hello! The API is at ' + conf.url +":"+ port + '/api');
 });
 
 app.listen(port);
-console.log('Magic happens at http://localhost:' + port);
+console.log('Magic happens at ' + conf.url +":"+ port);
 var apiRoutes = express.Router();
 
 /**
@@ -60,8 +60,8 @@ var apiRoutes = express.Router();
  *     }
  *
  */
-apiRoutes.post('/data', measurementController.addData);
-apiRoutes.get('/data', measurementController.getData);
+apiRoutes.post('/measurement', measurementController.addData);
+apiRoutes.get('/measurement', measurementController.getData);
 
 
 // apply the routes to our application with the prefix /api
