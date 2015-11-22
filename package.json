@@ -1,0 +1,16 @@
+{
+  "name": "ascl",
+  "main": "server.js",
+  "author": "Guillermo",
+  "version": "0.0.1",
+  "description": "Rest API for Wind sensor",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "http-status-codes": "^1.0.5",
+    "mongoose": "~4.0.0",
+    "morgan": "^1.6.1"
+  },
+  "engine": "node 0.12.7"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "ASCL project",
+  "version": "0.0.1",
+  "description": "Api for our wind sensor",
+  "template": {
+    "withCompare": false
+  }
+}
