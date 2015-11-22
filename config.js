@@ -5,7 +5,7 @@ module.exports = function(){
             return {'database': 'mongodb://localhost/wind', 'url':'http://localhost'};
 
         case 'production':
-            return {'database': 'mongodb://heroku_6v8t7pqh:ascl2015@ds047114.mongolab.com:47114/heroku_6v8t7pqh', 'url':'https://ascl.herokuapp.com/'};
+            return {'database': 'mongodb://ascl:ascl2015@ds047114.mongolab.com:47114/heroku_6v8t7pqh', 'url':'https://ascl.herokuapp.com/'};
 
         default:
             return {'database': 'mongodb://localhost/wind', 'url':'http://localhost'};
