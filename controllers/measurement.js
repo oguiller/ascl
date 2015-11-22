@@ -40,7 +40,14 @@ exports.addData = function (req, res) {
 
 exports.getData = function (req, res) {
     console.log("Getting data: ");
-    res.status(HttpStatus.OK).send({user: "manuel"});
+
+    Measurement.find({}, function(err, measurements){
+    if(err){
+      errorHandler(err, res);
+      return;
+    }
+      res.status(HttpStatus.OK).send({data: measurements});
+  });
 };
 
 var errorHandler = function (err, res) {
