@@ -62,6 +62,7 @@ var apiRoutes = express.Router();
  */
 apiRoutes.post('/measurement', measurementController.addData);
 apiRoutes.get('/measurement', measurementController.getData);
+apiRoutes.get('/measurement/post/:value', measurementController.getDataPost); // This is just a test
 
 
 // apply the routes to our application with the prefix /api

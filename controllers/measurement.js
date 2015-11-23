@@ -38,10 +38,44 @@ exports.addData = function (req, res) {
     });
 };
 
-exports.getData = function (req, res) {
-    console.log("Getting data: ");
+exports.getDataPost = function (req, res) {
+    var value = req.params.value
+    console.log("Posting sample: " + value);
+    var date = new Date();
 
-    Measurement.find({}, function(err, measurements){
+    var measurement = new Measurement({ 
+         dateId: date.yyyymmddmmss()
+        , deviceName: "windie01"
+        , date: date
+        , year: date.getFullYear()
+        , month: date.getMonth() + 1
+        , day: date.getDate()
+        , hour: date.getHours()
+        , value: value
+    });
+
+    measurement.save(function (err) {
+        if (err){
+            errorHandler(err, res);
+            return;
+        }
+
+        console.log('Measurement saved successfully');
+        res.status(HttpStatus.OK).send({measurement: measurement});
+    });
+};
+
+exports.getData = function (req, res) {
+    console.log("Getting data filtered ");
+
+    var filteredQuery = {},
+        acceptableFields = ['day', 'year', 'hour', 'month'];
+
+    acceptableFields.forEach(function(field) {
+        if(req.query[field] != undefined) { filteredQuery[field] = req.query[field];}
+    });
+
+    Measurement.find(filteredQuery, {_id: false, __v: false}, function(err, measurements){
     if(err){
       errorHandler(err, res);
       return;
